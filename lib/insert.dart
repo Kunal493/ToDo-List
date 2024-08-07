@@ -48,26 +48,6 @@ class _InsertTodoScreenState extends State<InsertTodoScreen> {
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: _priorityController,
-                decoration: InputDecoration(
-                  labelText: 'Priority',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter priority';
-                  }
-                  if (int.tryParse(value) == null) {
-                    return 'Priority must be a number';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16),
-              TextFormField(
                 controller: _descriptionController,
                 decoration: InputDecoration(
                   labelText: 'Description',
@@ -130,7 +110,6 @@ class _InsertTodoScreenState extends State<InsertTodoScreen> {
                     final todo = Todo(
                       id: Uuid().v4(),
                       name: _nameController.text,
-                      priority: int.parse(_priorityController.text),
                       remindingTime: remindingDateTime,
                       description: _descriptionController.text,
                     );

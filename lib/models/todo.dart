@@ -5,14 +5,12 @@ class Todo {
   final String name;
   final String? description;
   final DateTime? remindingTime;
-  final int? priority;
 
   Todo({
     required this.id,
     required this.name,
     this.description,
     this.remindingTime,
-    this.priority,
   });
 
   factory Todo.fromJson(Map<String, dynamic> json) {
@@ -22,7 +20,6 @@ class Todo {
       description: json['description'],
       remindingTime: json['remindingTime'] != null ? DateTime.parse(
           json['remindingTime']) : null,
-      priority: json['priority'],
     );
   }
 
@@ -32,7 +29,6 @@ class Todo {
       'name': name,
       'description': description,
       'remindingTime': remindingTime?.toIso8601String(),
-      'priority': priority,
     };
   }
 }

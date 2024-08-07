@@ -16,9 +16,6 @@ class EditTodoScreen extends StatefulWidget {
 class _EditTodoScreenState extends State<EditTodoScreen> {
   final _formKey = GlobalKey<FormState>();
   late final _nameController = TextEditingController(text: widget.todo.name);
-  late final _priorityController = TextEditingController(
-    text: widget.todo.priority?.toString(),
-  );
   late final _descriptionController = TextEditingController(
     text: widget.todo.description,
   );
@@ -62,17 +59,7 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
-              TextFormField(
-                controller: _priorityController,
-                decoration: InputDecoration(
-                  labelText: 'Priority',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                keyboardType: TextInputType.number,
-              ),
+
               SizedBox(height: 16),
               TextFormField(
                 controller: _descriptionController,
@@ -137,7 +124,6 @@ class _EditTodoScreenState extends State<EditTodoScreen> {
                     final newTodo = Todo(
                       id: widget.todo.id,
                       name: _nameController.text,
-                      priority: int.tryParse(_priorityController.text),
                       remindingTime: remindingDateTime,
                       description: _descriptionController.text,
                     );
